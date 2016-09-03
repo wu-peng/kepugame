@@ -1,2 +1,4 @@
 /webapp/WEB-INF/classes
 *.JSCompress
+/webapp/
+/target/
