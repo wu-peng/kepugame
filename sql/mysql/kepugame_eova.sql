@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2016-08-31 13:32:02
+Date: 2016-09-04 11:20:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,7 +31,7 @@ CREATE TABLE `eova_button` (
   `is_base` tinyint(1) DEFAULT '0' COMMENT '是否基础功能',
   `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1093 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1105 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_button
@@ -110,6 +110,12 @@ INSERT INTO `eova_button` VALUES ('1089', 'game_score', '查看', null, '/eova/w
 INSERT INTO `eova_button` VALUES ('1090', 'game_score', '导入', null, '/eova/template/single/btn/import.html', '/single_grid/import', '6', '0', '1', '0');
 INSERT INTO `eova_button` VALUES ('1091', 'image_manage', '查询', null, 'query', '/grid/query', '1', '0', '1', '0');
 INSERT INTO `eova_button` VALUES ('1092', 'game_rate', '查询', null, 'query', '/grid/query', '1', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1099', 'game_image_manage', '查询', null, 'query', '/grid/query', '1', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1100', 'game_image_manage', '新增', null, '/eova/widget/form/btn/add.html', '/form/add', '2', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1101', 'game_image_manage', '修改', null, '/eova/widget/form/btn/update.html', '/form/update', '3', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1102', 'game_image_manage', '删除', null, '/eova/widget/form/btn/delete.html', '/grid/delete', '4', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1103', 'game_image_manage', '查看', null, '/eova/widget/form/btn/detail.html', '/form/detail', '5', '0', '1', '0');
+INSERT INTO `eova_button` VALUES ('1104', 'game_image_manage', '导入', null, '/eova/template/single/btn/import.html', '/single_grid/import', '6', '0', '1', '0');
 
 -- ----------------------------
 -- Table structure for eova_dict
@@ -183,7 +189,7 @@ CREATE TABLE `eova_field` (
   `height` int(4) DEFAULT '20' COMMENT '控件高度',
   `config` varchar(2000) DEFAULT NULL COMMENT '拓展配置',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2128 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2134 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_field
@@ -287,6 +293,9 @@ INSERT INTO `eova_field` VALUES ('2124', 'user_score', null, 'weixin_id', 'weixi
 INSERT INTO `eova_field` VALUES ('2125', 'user_score', null, 'score', 'score', '0', 'number', '文本框', '3', null, '0', '1', '0', '1', '1', '1', '1', '0', '0', null, null, '', null, '130', '20', null);
 INSERT INTO `eova_field` VALUES ('2126', 'game_score', null, 'nickname', '用户昵称', '0', 'string', '文本框', '1', null, '1', '1', '0', '1', '1', '1', '1', '0', '0', null, null, '', null, '130', '20', null);
 INSERT INTO `eova_field` VALUES ('2127', 'game_score', null, 'score', 'score', '0', 'number', '文本框', '2', null, '1', '1', '0', '1', '1', '1', '1', '0', '0', null, null, '', null, '130', '20', null);
+INSERT INTO `eova_field` VALUES ('2131', 'game_image', null, 'id', 'id', '1', 'number', '自增框', '1', null, '0', '1', '0', '1', '1', '1', '1', '1', '0', null, null, '', null, '130', '20', null);
+INSERT INTO `eova_field` VALUES ('2132', 'game_image', null, 'image', '图片', '0', 'string', '图片框', '2', null, '0', '1', '0', '1', '1', '1', '1', '0', '0', null, null, '', null, '130', '20', null);
+INSERT INTO `eova_field` VALUES ('2133', 'game_image', null, 'sort', '排序', '0', 'number', '文本框', '3', null, '0', '1', '0', '1', '1', '1', '1', '0', '0', null, null, '', null, '130', '20', null);
 
 -- ----------------------------
 -- Table structure for eova_log
@@ -299,7 +308,7 @@ CREATE TABLE `eova_log` (
   `ip` varchar(255) NOT NULL COMMENT '操作IP',
   `info` varchar(500) DEFAULT NULL COMMENT '操作详情',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_log
@@ -359,6 +368,14 @@ INSERT INTO `eova_log` VALUES ('52', '1', '1', '0:0:0:0:0:0:0:1', 'game_score');
 INSERT INTO `eova_log` VALUES ('53', '1', '3', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
 INSERT INTO `eova_log` VALUES ('54', '1', '2', '0:0:0:0:0:0:0:1', 'eova_menu_code[1018]');
 INSERT INTO `eova_log` VALUES ('55', '1', '2', '127.0.0.1', 'eova_menu_code[1017]');
+INSERT INTO `eova_log` VALUES ('56', '1', '2', '192.168.1.11', 'user_weixin[1]');
+INSERT INTO `eova_log` VALUES ('57', '1', '2', '192.168.1.11', 'user_weixin[1]');
+INSERT INTO `eova_log` VALUES ('58', '1', '2', '127.0.0.1', 'eova_menu_code[1018]');
+INSERT INTO `eova_log` VALUES ('59', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1020]');
+INSERT INTO `eova_log` VALUES ('60', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1018]');
+INSERT INTO `eova_log` VALUES ('61', '1', '1', '0:0:0:0:0:0:0:1', 'game_image');
+INSERT INTO `eova_log` VALUES ('62', '1', '1', '0:0:0:0:0:0:0:1', 'game_image');
+INSERT INTO `eova_log` VALUES ('63', '1', '2', '0:0:0:0:0:0:0:1', 'eova_menu_code[1018]');
 
 -- ----------------------------
 -- Table structure for eova_menu
@@ -380,7 +397,7 @@ CREATE TABLE `eova_menu` (
   `is_del` tinyint(1) DEFAULT '0' COMMENT '是否隐藏',
   `filter` varchar(500) DEFAULT NULL COMMENT '初始数据过滤条件',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1022 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_menu
@@ -401,6 +418,7 @@ INSERT INTO `eova_menu` VALUES ('1015', 'user_weixin', '微信用户管理', 'si
 INSERT INTO `eova_menu` VALUES ('1017', 'game_score', '游戏分数', 'single_grid', 'icon-applicationosxget', '1', '3', '0', '', '', '{\"objectCode\":\"game_score\"}', '', '1', '');
 INSERT INTO `eova_menu` VALUES ('1018', 'image_manage', '图片管理', 'diy', 'icon-pagelandscapeshot', '1', '3', '0', '', 'imageManage/toImageManage', '{}', '', '0', '');
 INSERT INTO `eova_menu` VALUES ('1019', 'game_rate', '排行榜', 'diy', '', '1', '3', '0', '', 'game/queryRank', '{}', null, '0', null);
+INSERT INTO `eova_menu` VALUES ('1021', 'game_image_manage', '游戏图片管理', 'single_grid', '', '1', '3', '0', '', '', '{\"objectCode\":\"game_image\"}', null, '0', null);
 
 -- ----------------------------
 -- Table structure for eova_menu_object
@@ -440,7 +458,7 @@ CREATE TABLE `eova_object` (
   `diy_js` varchar(255) DEFAULT NULL COMMENT '依赖JS文件',
   `biz_intercept` varchar(255) DEFAULT NULL COMMENT '自定义业务拦截器',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1018 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1020 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_object
@@ -458,6 +476,7 @@ INSERT INTO `eova_object` VALUES ('10', 'eova_task_code', '定时调度', null, 
 INSERT INTO `eova_object` VALUES ('1015', 'user_weixin', '微信用户', null, 'user_weixin', 'id', 'main', '1', '0', '1', '1', null, null, null, null, null);
 INSERT INTO `eova_object` VALUES ('1016', 'user_score', '游戏分数', null, 'user_score', 'id', 'main', '1', '0', '1', '1', null, null, null, null, null);
 INSERT INTO `eova_object` VALUES ('1017', 'game_score', '游戏分数', 'game_score', null, 'nickname', 'main', '1', '0', '1', '1', null, null, null, null, null);
+INSERT INTO `eova_object` VALUES ('1019', 'game_image', '游戏图片', null, 'game_image', 'id', 'main', '1', '0', '1', '1', null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for eova_role
@@ -486,7 +505,7 @@ CREATE TABLE `eova_role_btn` (
   `rid` int(11) NOT NULL COMMENT '角色',
   `bid` int(11) NOT NULL COMMENT '功能',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=133 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_role_btn
@@ -552,6 +571,11 @@ INSERT INTO `eova_role_btn` VALUES ('129', '1', '1088');
 INSERT INTO `eova_role_btn` VALUES ('130', '1', '1089');
 INSERT INTO `eova_role_btn` VALUES ('131', '1', '1091');
 INSERT INTO `eova_role_btn` VALUES ('132', '1', '1092');
+INSERT INTO `eova_role_btn` VALUES ('138', '1', '1099');
+INSERT INTO `eova_role_btn` VALUES ('139', '1', '1100');
+INSERT INTO `eova_role_btn` VALUES ('140', '1', '1101');
+INSERT INTO `eova_role_btn` VALUES ('141', '1', '1102');
+INSERT INTO `eova_role_btn` VALUES ('142', '1', '1103');
 
 -- ----------------------------
 -- Table structure for eova_task

@@ -15,7 +15,10 @@ import com.jfinal.core.JFinal;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.oss.action.GameController;
 import com.oss.action.ImageController;
+import com.oss.action.WeixinController;
+import com.oss.model.GameImage;
 import com.oss.model.GameRank;
+import com.oss.model.UserWeixin;
 
 public class OSSConfig extends EovaConfig {
 	
@@ -39,9 +42,14 @@ public class OSSConfig extends EovaConfig {
 		// 自定义的路由配置往这里加。。。
 		me.add("/imageManage", ImageController.class);
 		me.add("/game", GameController.class);
+		me.add("/weixin", WeixinController.class);
 		
 		// 不需要登录拦截的URL
 		LoginInterceptor.excludes.add("/init");
+		LoginInterceptor.excludes.add("/imageManage/toImageManage");
+		LoginInterceptor.excludes.add("/weixin/game");
+		LoginInterceptor.excludes.add("/weixin/uploadScore");
+		//LoginInterceptor.excludes.add("/game/index.html");
 	}
 
 	/**
@@ -53,6 +61,8 @@ public class OSSConfig extends EovaConfig {
 	protected void mapping(ActiveRecordPlugin arp) {
 		// 自定义的Model映射往这里加。。。
 		arp.addMapping("user_score", GameRank.class);
+		arp.addMapping("game_image", GameImage.class);
+		arp.addMapping("user_weixin", UserWeixin.class);
 	}
 
 	/**

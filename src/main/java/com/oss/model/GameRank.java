@@ -15,7 +15,16 @@ public class GameRank extends BaseModel<GameRank>{
 	 * @return
 	 */
 	public List<GameRank> find(){
-		String sql = "select a.nickname,b.score from user_weixin a,user_score b where a.id = b.weixin_id";
+		String sql = "select a.nickname,b.score from user_weixin a,user_score b where a.openid = b.openid";
 		return this.find(sql);
+	}
+	
+	/**
+	 * 根据openid查询游戏分数
+	 * @return
+	 */
+	public GameRank findByOpenid(String openid){
+		String sql = "select a.* from user_score a where a.openid=?";
+		return this.findFirst(sql,openid);
 	}
 }

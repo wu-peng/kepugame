@@ -40,149 +40,22 @@
     <dependencies>
     
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
-        </dependency>
-        
-<!--         <dependency> -->
-<!--             <groupId>com.oracle</groupId> -->
-<!--             <artifactId>ojdbc14</artifactId> -->
-<!--             <version>${oracle.version}</version> -->
-<!--         </dependency> -->
-        
-<!--         <dependency> -->
-<!--             <groupId>postgresql</groupId> -->
-<!--             <artifactId>postgresql</artifactId> -->
-<!--             <version>9.1-901-1.jdbc4</version> -->
-<!--         </dependency> -->
-        
-<!--         <dependency> -->
-<!--             <groupId>com.h2database</groupId> -->
-<!--             <artifactId>h2</artifactId> -->
-<!--             <version>1.4.187</version> -->
-<!--         </dependency> -->
-        
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jfinal</groupId>
-            <artifactId>jfinal</artifactId>
-            <version>${jfinal.version}</version>
-        </dependency>
-        
-        <dependency>
-    		<groupId>cglib</groupId>
-    		<artifactId>cglib-nodep</artifactId>
-    		<version>${cglib.version}</version>
+		    <groupId>com.eova2</groupId>
+		    <artifactId>eova2</artifactId>
+		    <version>1.0</version>
 		</dependency>
-
-        <dependency>
-            <groupId>com.jfinal</groupId>
-            <artifactId>cos</artifactId>
-            <version>${cos.version}</version>
-        </dependency>
-
-        <dependency>
+		
+		<dependency>
             <groupId>com.jfinal</groupId>
             <artifactId>jetty-server</artifactId>
             <version>${jetty.version}</version>
             <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>com.ibeetl</groupId>
-            <artifactId>beetl</artifactId>
-            <version>${beetl.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>${ehcache.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sourceforge.jexcelapi</groupId>
-            <artifactId>jxl</artifactId>
-            <version>${jxl.version}</version>
-        </dependency>
-
-		<dependency>
-			<groupId>net.lingala.zip4j</groupId>
-			<artifactId>zip4j</artifactId>
-			<version>1.3.1</version>
-		</dependency>
 		
 		<dependency>
-		    <groupId>org.freemarker</groupId>
-		    <artifactId>freemarker</artifactId>
-		    <version>2.3.20</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>joda-time</groupId>
-		    <artifactId>joda-time</artifactId>
-		    <version>2.3</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.quartz-scheduler</groupId>
-		    <artifactId>quartz</artifactId>
-		    <version>2.2.3</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.4</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>commons-collections</groupId>
-		    <artifactId>commons-collections</artifactId>
-		    <version>3.2.2</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.apache.velocity</groupId>
-		    <artifactId>velocity</artifactId>
-		    <version>1.7</version>
+		  <groupId>com.github.liyiorg</groupId>
+		  <artifactId>weixin-popular</artifactId>
+		  <version>2.8.0</version>
 		</dependency>
     </dependencies>
     <build>
