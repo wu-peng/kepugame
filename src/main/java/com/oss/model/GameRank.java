@@ -11,20 +11,30 @@ public class GameRank extends BaseModel<GameRank>{
 	public static final GameRank dao = new GameRank();
 
 	/**
-	 * 查询游戏分数
+	 * 排行榜查询
 	 * @return
 	 */
 	public List<GameRank> find(){
-		String sql = "select a.nickname,b.score from user_weixin a,user_score b where a.openid = b.openid";
+		String sql =	"SELECT "+
+				   "	@rownum:=@rownum+1 rownum,a.nickname,a.maxscore,a.mintime "+
+				   "FROM "+
+				   "	( "+
+				   "		SELECT "+
+				   "			@rownum:=0, "+
+				   "			b.nickname as nickname, "+
+				   "			max(a.score) AS maxscore, "+
+				   "			min(a.create_time) AS mintime "+
+				   "		FROM "+
+				   "			user_score a, "+
+				   "			user_weixin b "+
+				   "		WHERE "+
+				   "			a.openid = b.openid "+
+				   "		GROUP BY "+
+				   "			a.openid "+
+				   "	) a "+
+				   "ORDER BY "+
+				   "	a.maxscore DESC, "+
+				   "	a.mintime ";
 		return this.find(sql);
-	}
-	
-	/**
-	 * 根据openid查询游戏分数
-	 * @return
-	 */
-	public GameRank findByOpenid(String openid){
-		String sql = "select a.* from user_score a where a.openid=?";
-		return this.findFirst(sql,openid);
 	}
 }

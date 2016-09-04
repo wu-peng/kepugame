@@ -2,9 +2,13 @@ package com.oss.action;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.eova.common.utils.time.DateUtil;
 import com.eova.config.EovaConfig;
 import com.jfinal.core.Controller;
 import com.oss.model.GameRank;
@@ -97,19 +101,43 @@ public class WeixinController extends Controller {
 		//System.out.println(umap.getUnionid());
 		
 		setAttr("openid", umap.getOpenid());
+		List<GameRank> rankList = new GameRank().find();
+		setAttr("ranks", rankList);
 		render("/game/index.html");
 	}
 	
 	public void uploadScore(){
+		Map<String, Object> map = new HashMap<String,Object>();
+		String currentDate = DateUtil.getCurrDateStr();
+		String startDate = currentDate+" 00:00:00";
+		String endDate = currentDate+" 23:59:59";
 		
-		String score = getPara("score");
+		Integer score = getParaToInt("score");
 		String openid = getPara("openid");
+		
+		GameRank count = GameRank.dao.findFirst("select count(*) as count from user_score where openid=? and create_time>str_to_date(?,'%Y-%m-%d %H:%i:%s') and create_time<str_to_date(?,'%Y-%m-%d %H:%i:%s')", openid,startDate,endDate);
+		if (count.getLong("count")>=5) {
+			map.put("status", "0");
+			map.put("msg", "每天只能玩5次哦");
+			renderJson(map);
+			return;
+		}
+		
+		GameRank maxscore = GameRank.dao.findFirst("select max(score) as maxscore from user_score where openid=?", openid);
+		if (score<=maxscore.getInt("maxscore")) {
+			map.put("status", "0");
+			map.put("msg", "没有破纪录");
+		}else{
+			map.put("status", "1");
+			map.put("msg", "破纪录啦");
+		}
 		
 		GameRank rank = new GameRank();
 		rank.set("openid", openid);
 		rank.set("score", score);
 		rank.set("create_time", new Date());
 		rank.save();
-		renderJson(rank);
+		
+		renderJson(map);
 	}
 }

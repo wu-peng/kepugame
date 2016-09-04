@@ -70,60 +70,11 @@
             </div>
             <div class="Rlist">
                 <ul>
+                	<%for(r in ranks){%>
                     <li>
-                        <span>张三</span><span>1000分</span><span>一等奖</span>
+                        <span>${r.nickname}</span><span>${r.maxscore}分</span><span><%if(r.rownum==1){%>第一名<%}%><%else if(r.rownum>1&&r.rownum<=2){%>第二名<%}%><%else if(r.rownum>2&&r.rownum<=10){%>第三名<%}%></span>
                     </li>
-                    <li>
-                        <span>张三</span><span>900分</span><span>二等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>900分</span><span>二等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>800分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>800分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>800分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>700分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>700分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>700分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>600分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>600分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>600分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>500分</span><span>三等奖</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>500分</span><span>未上榜</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>500分</span><span>未上榜</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>500分</span><span>未上榜</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>400分</span><span>未上榜</span>
-                    </li>
-                    <li>
-                        <span>张三</span><span>400分</span><span>未上榜</span>
-                    </li>
+                    <%}%>
                 </ul>
             </div>
         </div>
@@ -288,7 +239,8 @@
                     data: { "openid": "${openid}", "score": Mark },
                     dataType: "json",
                     success: function (data) {
-                        $(".StartPage").hide();
+                    	alert(data.msg);
+                    	$(".StartPage").hide();
                         $(".EndPage").show();
                         Gstart = false;
                         $(".EndPage h1 span").html(Mark + "分");

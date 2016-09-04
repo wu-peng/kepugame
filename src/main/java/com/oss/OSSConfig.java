@@ -49,6 +49,7 @@ public class OSSConfig extends EovaConfig {
 		LoginInterceptor.excludes.add("/imageManage/toImageManage");
 		LoginInterceptor.excludes.add("/weixin/game");
 		LoginInterceptor.excludes.add("/weixin/uploadScore");
+		LoginInterceptor.excludes.add("/game/queryRank");
 		//LoginInterceptor.excludes.add("/game/index.html");
 	}
 
