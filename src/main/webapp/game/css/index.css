@@ -124,9 +124,9 @@ transform:scale(0);transition:all 0.3s linear 0s;-webkit-transition:all 0.3s lin
 .Share{width:18rem;height:4.8rem;background:#32b16c;font-size:2.4rem;line-height:4.8rem;color:#FFF;text-align:center;position:absolute;left:50%;margin-left:-9rem;top:72%;z-index:1;cursor:pointer;}
 
 .RankingList{width:100%;height:100%;position:absolute;background:#f0c13d;z-index:3;display:none;}
-.CloseRank{position:absolute;top:0%;right:0;width:40px;height:40px;background:url(../images/close.png) center center no-repeat ;background-size:25px;}
+.CloseRank{position:absolute;top:0%;right:0;width:40px;height:40px;background:url(../images/Close.png) center center no-repeat ;background-size:25px;}
 
-.RankingList .title{width:100%;height:50px;top:10%;left:0;background:url(../images/record_BG.png) center center no-repeat;background-size:auto 100%;text-align:center;color:#FFF;line-height:50px;}
+.RankingList .title{width:100%;height:50px;top:10%;left:0;background:url(../images/record_Bg.png) center center no-repeat;background-size:auto 100%;text-align:center;color:#FFF;line-height:50px;}
 .RankingList .Rtitle{width:90%;height:30px;line-height:30px;margin-top:20px;border-bottom:2px solid #25a4ff;margin:auto;font-size:14px;}
 .RankingList .Rtitle span{display:inline-block;height:30px;text-align:center;color:#25a4ff;float:left;}
 .RankingList .Rtitle span:nth-child(1){width:40%;}
@@ -140,7 +140,7 @@ transform:scale(0);transition:all 0.3s linear 0s;-webkit-transition:all 0.3s lin
 .RankingList .Rlist ul li span:nth-child(3){width:30%;}
 
 .Explanation{width:100%;height:100%;position:absolute;background:#f0c13d;z-index:3;display:none;}
-.CloseExplanation{position:absolute;top:0%;right:0;width:40px;height:40px;background:url(../images/close.png) center center no-repeat ;background-size:25px;}
+.CloseExplanation{position:absolute;top:0%;right:0;width:40px;height:40px;background:url(../images/Close.png) center center no-repeat ;background-size:25px;}
 .Explanation p{color:#000;font-size:12px;line-height:18px;width:90%;margin:10% auto 0;}
 
 @media screen and (orientation:portrait) {

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2016-09-04 11:20:23
+Date: 2016-09-04 14:03:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -38,8 +38,9 @@ CREATE TABLE `user_score` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `openid` varchar(255) DEFAULT NULL,
   `score` int(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_score
@@ -61,7 +62,7 @@ CREATE TABLE `user_weixin` (
   `code` varchar(255) DEFAULT NULL,
   `refresh_token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_weixin

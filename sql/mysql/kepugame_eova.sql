@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2016-09-04 11:20:28
+Date: 2016-09-04 14:04:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -313,69 +313,6 @@ CREATE TABLE `eova_log` (
 -- ----------------------------
 -- Records of eova_log
 -- ----------------------------
-INSERT INTO `eova_log` VALUES ('1', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1000]');
-INSERT INTO `eova_log` VALUES ('2', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1001]');
-INSERT INTO `eova_log` VALUES ('3', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1002]');
-INSERT INTO `eova_log` VALUES ('4', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1003]');
-INSERT INTO `eova_log` VALUES ('5', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1004]');
-INSERT INTO `eova_log` VALUES ('6', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1005]');
-INSERT INTO `eova_log` VALUES ('7', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1006]');
-INSERT INTO `eova_log` VALUES ('8', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1007]');
-INSERT INTO `eova_log` VALUES ('9', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1011]');
-INSERT INTO `eova_log` VALUES ('10', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1012]');
-INSERT INTO `eova_log` VALUES ('11', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1013]');
-INSERT INTO `eova_log` VALUES ('12', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1009]');
-INSERT INTO `eova_log` VALUES ('13', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1010]');
-INSERT INTO `eova_log` VALUES ('14', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1014]');
-INSERT INTO `eova_log` VALUES ('15', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1000]');
-INSERT INTO `eova_log` VALUES ('16', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1014]');
-INSERT INTO `eova_log` VALUES ('17', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1014]');
-INSERT INTO `eova_log` VALUES ('18', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1012]');
-INSERT INTO `eova_log` VALUES ('19', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1011]');
-INSERT INTO `eova_log` VALUES ('20', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1010]');
-INSERT INTO `eova_log` VALUES ('21', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1009]');
-INSERT INTO `eova_log` VALUES ('22', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1008]');
-INSERT INTO `eova_log` VALUES ('23', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1007]');
-INSERT INTO `eova_log` VALUES ('24', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1006]');
-INSERT INTO `eova_log` VALUES ('25', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1005]');
-INSERT INTO `eova_log` VALUES ('26', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1004]');
-INSERT INTO `eova_log` VALUES ('27', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1003]');
-INSERT INTO `eova_log` VALUES ('28', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1002]');
-INSERT INTO `eova_log` VALUES ('29', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1001]');
-INSERT INTO `eova_log` VALUES ('30', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1000]');
-INSERT INTO `eova_log` VALUES ('31', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1014]');
-INSERT INTO `eova_log` VALUES ('32', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1014]');
-INSERT INTO `eova_log` VALUES ('33', '1', '1', '0:0:0:0:0:0:0:1', 'user_weixin');
-INSERT INTO `eova_log` VALUES ('34', '1', '1', '0:0:0:0:0:0:0:1', 'user_weixin');
-INSERT INTO `eova_log` VALUES ('35', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
-INSERT INTO `eova_log` VALUES ('36', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
-INSERT INTO `eova_log` VALUES ('37', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
-INSERT INTO `eova_log` VALUES ('38', '1', '1', '0:0:0:0:0:0:0:1', 'user_score');
-INSERT INTO `eova_log` VALUES ('39', '1', '1', '0:0:0:0:0:0:0:1', 'user_score');
-INSERT INTO `eova_log` VALUES ('40', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('41', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('42', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('43', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('44', '1', '2', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
-INSERT INTO `eova_log` VALUES ('45', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1016]');
-INSERT INTO `eova_log` VALUES ('46', '1', '2', '0:0:0:0:0:0:0:1', 'eova_field_code[2126]');
-INSERT INTO `eova_log` VALUES ('47', '1', '2', '0:0:0:0:0:0:0:1', 'eova_field_code[2127]');
-INSERT INTO `eova_log` VALUES ('48', '1', '2', '0:0:0:0:0:0:0:1', 'game_score[Test2]');
-INSERT INTO `eova_log` VALUES ('49', '1', '2', '0:0:0:0:0:0:0:1', 'game_score[Test2]');
-INSERT INTO `eova_log` VALUES ('50', '1', '2', '0:0:0:0:0:0:0:1', 'game_score[Test2]');
-INSERT INTO `eova_log` VALUES ('51', '1', '2', '0:0:0:0:0:0:0:1', 'game_score[Test21]');
-INSERT INTO `eova_log` VALUES ('52', '1', '1', '0:0:0:0:0:0:0:1', 'game_score');
-INSERT INTO `eova_log` VALUES ('53', '1', '3', '0:0:0:0:0:0:0:1', 'user_weixin[2]');
-INSERT INTO `eova_log` VALUES ('54', '1', '2', '0:0:0:0:0:0:0:1', 'eova_menu_code[1018]');
-INSERT INTO `eova_log` VALUES ('55', '1', '2', '127.0.0.1', 'eova_menu_code[1017]');
-INSERT INTO `eova_log` VALUES ('56', '1', '2', '192.168.1.11', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('57', '1', '2', '192.168.1.11', 'user_weixin[1]');
-INSERT INTO `eova_log` VALUES ('58', '1', '2', '127.0.0.1', 'eova_menu_code[1018]');
-INSERT INTO `eova_log` VALUES ('59', '1', '3', '0:0:0:0:0:0:0:1', 'eova_menu_code[1020]');
-INSERT INTO `eova_log` VALUES ('60', '1', '3', '0:0:0:0:0:0:0:1', 'eova_object_code[1018]');
-INSERT INTO `eova_log` VALUES ('61', '1', '1', '0:0:0:0:0:0:0:1', 'game_image');
-INSERT INTO `eova_log` VALUES ('62', '1', '1', '0:0:0:0:0:0:0:1', 'game_image');
-INSERT INTO `eova_log` VALUES ('63', '1', '2', '0:0:0:0:0:0:0:1', 'eova_menu_code[1018]');
 
 -- ----------------------------
 -- Table structure for eova_menu

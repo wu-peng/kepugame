@@ -138,7 +138,7 @@
             </p>
         </div>
     </div>
-    <div class="loadingimg"></div>
+    <div class="loadingimg" style="display: none"></div>
     <!--<div class="landscape">
         <img src="/game/images/landscape.png" class="img-responsive" />
         <p>请将手机调至竖屏状态，获得最佳浏览体验！</p>
@@ -281,18 +281,17 @@
             }
             //游戏结束
             function GameOver() {
+            	clearInterval(CountDown);
                 $.ajax({ //上传分数
                     type: "post",
                     url: "http://wupeng.tunnel.qydev.com/weixin/uploadScore",
                     data: { "openid": "${openid}", "score": Mark },
                     dataType: "json",
                     success: function (data) {
-                    	alert(data);
                         $(".StartPage").hide();
                         $(".EndPage").show();
                         Gstart = false;
                         $(".EndPage h1 span").html(Mark + "分");
-                        clearInterval(CountDown);
                     }
                 });
             }
