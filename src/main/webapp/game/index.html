@@ -239,11 +239,11 @@
                     data: { "openid": "${openid}", "score": Mark },
                     dataType: "json",
                     success: function (data) {
-                    	alert(data.msg);
                     	$(".StartPage").hide();
                         $(".EndPage").show();
                         Gstart = false;
                         $(".EndPage h1 span").html(Mark + "分");
+                        alert(data.msg);
                     }
                 });
             }

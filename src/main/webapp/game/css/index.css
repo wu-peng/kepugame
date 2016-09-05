@@ -56,7 +56,7 @@ transform:scale(0);transition:all 0.3s linear 0s;-webkit-transition:all 0.3s lin
 .GameMain1 ul li{width:20%;position:absolute;}
 .GameMain1 ul li.Flip{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg);filter:FlipV;}
 .GameMain1 ul li img{width:100%;display:block;background:#edef87;border:1px solid #000;border-radius:3px;transition:all 0.1s linear 0s;}
-.GameMain1 ul li.Flip img{background:#F00;}
+/* .GameMain1 ul li.Flip img{background:#F00;} */
 .GameMain1 ul li:hover img{transform:scale(1.15);background:#ffc600;}
 .Number3 li:nth-child(1){top:30%;left:6.66%;}
 .Number3 li:nth-child(2){top:30%;left:40%;}
