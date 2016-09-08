@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2016-09-04 14:03:43
+Date: 2016-09-08 08:57:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,11 +24,7 @@ CREATE TABLE `game_image` (
   `image` varchar(255) DEFAULT NULL COMMENT '图片',
   `sort` int(255) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of game_image
--- ----------------------------
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_score
@@ -39,12 +35,10 @@ CREATE TABLE `user_score` (
   `openid` varchar(255) DEFAULT NULL,
   `score` int(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `is_over` int(1) DEFAULT NULL COMMENT '是否结束游戏',
+  `over_time` datetime DEFAULT NULL COMMENT '游戏结束时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_score
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_weixin
@@ -62,11 +56,7 @@ CREATE TABLE `user_weixin` (
   `code` varchar(255) DEFAULT NULL,
   `refresh_token` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of user_weixin
--- ----------------------------
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- View structure for game_score

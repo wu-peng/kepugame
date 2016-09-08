@@ -17,7 +17,7 @@ import com.oss.action.GameController;
 import com.oss.action.ImageController;
 import com.oss.action.WeixinController;
 import com.oss.model.GameImage;
-import com.oss.model.GameRank;
+import com.oss.model.UserScore;
 import com.oss.model.UserWeixin;
 
 public class OSSConfig extends EovaConfig {
@@ -48,6 +48,8 @@ public class OSSConfig extends EovaConfig {
 		LoginInterceptor.excludes.add("/init");
 		LoginInterceptor.excludes.add("/imageManage/toImageManage");
 		LoginInterceptor.excludes.add("/weixin/game");
+		LoginInterceptor.excludes.add("/weixin/findRank");
+		LoginInterceptor.excludes.add("/weixin/startGame");
 		LoginInterceptor.excludes.add("/weixin/uploadScore");
 		LoginInterceptor.excludes.add("/game/queryRank");
 		//LoginInterceptor.excludes.add("/game/index.html");
@@ -61,7 +63,7 @@ public class OSSConfig extends EovaConfig {
 	@Override
 	protected void mapping(ActiveRecordPlugin arp) {
 		// 自定义的Model映射往这里加。。。
-		arp.addMapping("user_score", GameRank.class);
+		arp.addMapping("user_score", UserScore.class);
 		arp.addMapping("game_image", GameImage.class);
 		arp.addMapping("user_weixin", UserWeixin.class);
 	}

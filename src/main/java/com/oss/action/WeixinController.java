@@ -11,7 +11,7 @@ import org.apache.commons.lang.StringUtils;
 import com.eova.common.utils.time.DateUtil;
 import com.eova.config.EovaConfig;
 import com.jfinal.core.Controller;
-import com.oss.model.GameRank;
+import com.oss.model.UserScore;
 import com.oss.model.UserWeixin;
 
 import weixin.popular.api.SnsAPI;
@@ -27,11 +27,8 @@ public class WeixinController extends Controller {
 		
 		//2、获取code后，请求以下链接获取access_token和openID
 		SnsToken at = SnsAPI.oauth2AccessToken(appId, appSecret, code);
-		String accessToken = at.getAccess_token();
-		String openID = at.getOpenid();
-		String refreshToken = at.getRefresh_token();
 
-		if (StringUtils.isBlank(accessToken)) {
+		if (at==null||StringUtils.isBlank(at.getAccess_token())) {
 			System.out.print("没有获取到响应参数");
 			String url = "https://open.weixin.qq.com/connect/oauth2/authorize?";
 			url+="appid="+appId;
@@ -63,6 +60,12 @@ public class WeixinController extends Controller {
 			openID = at.getOpenid();
 			refreshToken = at.getRefresh_token();*/
 		}
+		
+		String accessToken = at.getAccess_token();
+		String openID = at.getOpenid();
+		String refreshToken = at.getRefresh_token();
+		
+		
 		//3、拉取用户信息
 		User umap = SnsAPI.userinfo(accessToken, openID, "zh_CN");
 		
@@ -101,9 +104,42 @@ public class WeixinController extends Controller {
 		//System.out.println(umap.getUnionid());
 		
 		setAttr("openid", umap.getOpenid());
-		List<GameRank> rankList = new GameRank().find();
-		setAttr("ranks", rankList);
+		/*List<UserScore> rankList = new UserScore().find();
+		setAttr("ranks", rankList);*/
 		render("/game/index.html");
+	}
+	
+	public void findRank(){
+		List<UserScore> rankList = new UserScore().find();
+		renderJson(rankList);
+	}
+	
+	public void startGame(){
+		Map<String, Object> map = new HashMap<String,Object>();
+		String openid = getPara("openid");
+		
+		String currentDate = DateUtil.getCurrDateStr();
+		String startDate = currentDate+" 00:00:00";
+		String endDate = currentDate+" 23:59:59";
+		UserScore count = UserScore.dao.findFirst("select count(*) as count from user_score where openid=? and create_time>str_to_date(?,'%Y-%m-%d %H:%i:%s') and create_time<str_to_date(?,'%Y-%m-%d %H:%i:%s')", openid,startDate,endDate);
+		if (count.getLong("count")>=5) {
+			map.put("status", "0");
+			map.put("msg", "每天只能玩5次哦");
+			renderJson(map);
+			return;
+		}
+		
+		UserScore rank = new UserScore();
+		rank.set("openid", openid);
+		rank.set("score", 0);
+		rank.set("is_over", 0);
+		rank.set("create_time", new Date());
+		rank.save();
+		
+		Integer id = rank.get("id");
+		map.put("status", "1");
+		map.put("scoreid", id);
+		renderJson(map);
 	}
 	
 	public void uploadScore(){
@@ -114,8 +150,9 @@ public class WeixinController extends Controller {
 		
 		Integer score = getParaToInt("score");
 		String openid = getPara("openid");
+		String scoreId = getPara("scoreid");
 		
-		GameRank count = GameRank.dao.findFirst("select count(*) as count from user_score where openid=? and create_time>str_to_date(?,'%Y-%m-%d %H:%i:%s') and create_time<str_to_date(?,'%Y-%m-%d %H:%i:%s')", openid,startDate,endDate);
+		UserScore count = UserScore.dao.findFirst("select count(*) as count from user_score where openid=? and create_time>str_to_date(?,'%Y-%m-%d %H:%i:%s') and create_time<str_to_date(?,'%Y-%m-%d %H:%i:%s')", openid,startDate,endDate);
 		if (count.getLong("count")>=5) {
 			map.put("status", "0");
 			map.put("msg", "每天只能玩5次哦");
@@ -123,7 +160,7 @@ public class WeixinController extends Controller {
 			return;
 		}
 		
-		GameRank maxscore = GameRank.dao.findFirst("select max(score) as maxscore from user_score where openid=?", openid);
+		UserScore maxscore = UserScore.dao.findFirst("select max(score) as maxscore from user_score");
 		if (score<=maxscore.getInt("maxscore")) {
 			map.put("status", "0");
 			map.put("msg", "没有破纪录");
@@ -132,11 +169,11 @@ public class WeixinController extends Controller {
 			map.put("msg", "破纪录啦");
 		}
 		
-		GameRank rank = new GameRank();
-		rank.set("openid", openid);
-		rank.set("score", score);
-		rank.set("create_time", new Date());
-		rank.save();
+		UserScore userScore = UserScore.dao.findById(scoreId);
+		userScore.set("score", score);
+		userScore.set("is_over", 1);
+		userScore.set("over_time", new Date());
+		userScore.update();
 		
 		renderJson(map);
 	}

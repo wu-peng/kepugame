@@ -4,17 +4,17 @@ import java.util.List;
 
 import com.eova.common.base.BaseModel;
 
-public class GameRank extends BaseModel<GameRank>{
+public class UserScore extends BaseModel<UserScore>{
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final GameRank dao = new GameRank();
+	public static final UserScore dao = new UserScore();
 
 	/**
 	 * 排行榜查询
 	 * @return
 	 */
-	public List<GameRank> find(){
+	public List<UserScore> find(){
 		String sql =	"SELECT "+
 				   "	@rownum:=@rownum+1 rownum,a.nickname,a.maxscore,a.mintime "+
 				   "FROM "+

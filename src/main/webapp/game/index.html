@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
     <title>科普游戏</title>
-    <link href="/game/css/index.css" rel="stylesheet" />
+    <link href="/game/css/index.css?v=201609051232" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
@@ -59,6 +59,7 @@
             </h1>
             <div class="OnceMore">再来一次</div>
             <div class="Share">炫耀一下</div>
+            <div class="backfirst">回到首页</div>
         </div>
         <div class="RankingList">
             <div class="CloseRank"></div>
@@ -69,13 +70,7 @@
                 <span>奖项</span>
             </div>
             <div class="Rlist">
-                <ul>
-                	<%for(r in ranks){%>
-                    <li>
-                        <span>${r.nickname}</span><span>${r.maxscore}分</span><span><%if(r.rownum==1){%>第一名<%}%><%else if(r.rownum>1&&r.rownum<=2){%>第二名<%}%><%else if(r.rownum>2&&r.rownum<=10){%>第三名<%}%></span>
-                    </li>
-                    <%}%>
-                </ul>
+                
             </div>
         </div>
         <div class="Explanation">
@@ -99,13 +94,17 @@
     <script src="/game/js/touch.js"></script>
     <script>
         $(function () {
-            $(".container").height($(window).height());
-            $(".Rlist").height($(window).height() - 100);
-            $(window).resize(function () {
-                $(".container").height($(window).height());
+        	//console.log($(window).width() + " " +  $(window).height());
+        	setTimeout(function(){
+        		$(".container").height($(window).height());
                 $(".Rlist").height($(window).height() - 100);
-            })
-
+                $(window).resize(function () {
+                    $(".container").height($(window).height());
+                    $(".Rlist").height($(window).height() - 100);
+                })
+        	},800)
+            
+			var scoreid;
             var Mark = 0,//分数
                 AnswerNum = 0,//答题数
                 CDTime = 60,//答题总时间
@@ -115,43 +114,65 @@
             var pa = new Array();//图片数组
             for (var i = 0; i < 15; i++) {
                 pa[i] = "/game/images/ic_" + i + ".png";
-                $(".loadingimg").append('<img src="/game/images/ic_' + i + '.png" />')
+                $(".loadingimg").append('<img src="/game/images/ic_' + i + '.png" />');
             }
             $(".submit").singleTap(function () {
-                //$.ajax({ //判断用户今天玩了几次
-                //    type: "get",
-                //    url: "",
-                //    data: { "openid": "" },
-                //    dataType: "json",
-                //    success: function (data) {
-                //        if (data.num <= 5) {
-                $(".HomePage").hide();
-                $(".StartPage").show();
-                StartGame();
-                //        }
-                //    }
-                //})
+                $.ajax({ //判断用户今天玩了几次
+                    type: "post",
+                    url: "/weixin/startGame",
+                    data: { "openid": "${openid}" },
+                    dataType: "json",
+                    success: function (data) {
+                    	if (data.status==1) {
+                    		scoreid = data.scoreid;
+                    		$(".HomePage").hide();
+                            $(".StartPage").show();
+                            StartGame();
+                    	}else{
+							alert(data.msg);
+						}
+                    }
+                });
             })
             $(".OnceMore").singleTap(function () {
-                //$.ajax({ //判断用户今天玩了几次
-                //    type: "get",
-                //    url: "",
-                //    data: { "openid": "" },
-                //    dataType: "json",
-                //    success: function (data) {
-                //        if (data.num <= 5) {
-                $(".EndPage").hide();
-                $(".StartPage").show();
-                StartGame();
-                //        }
-                //    }
-                //})
+                $.ajax({ //判断用户今天玩了几次
+                    type: "post",
+                    url: "/weixin/startGame",
+                    data: { "openid": "${openid}" },
+                    dataType: "json",
+                    success: function (data) {
+                    	if (data.status==1) {
+                    		scoreid = data.scoreid;
+			                $(".EndPage").hide();
+			                $(".StartPage").show();
+			                StartGame();
+                    	}else{
+							alert(data.msg);
+						}
+                    }
+                });
             })
             $(".CloseRank").singleTap(function () {
                 $(".RankingList").hide();
                 $(".HomePage").show();
             })
             $(".RankingIcon").singleTap(function () {
+            	$.ajax({ 
+                    type: "post",
+                    url: "/weixin/findRank",
+                    data: {  },
+                    dataType: "json",
+                    success: function (data) {
+                    	var content="<ul>";
+                    	for (var i = 0; i < data.length; i++) {
+                    		content+="   <li>";
+                           	content+="        <span>"+data[i].nickname+"</span><span>"+data[i].maxscore+"分</span><span>第"+data[i].rownum+"名</span>";
+                           	content+=	"	</li>";
+						}
+                    	content+="</ul>";
+	                    $(".Rlist").html(content);
+                    }
+                });
                 $(".HomePage").hide();
                 $(".RankingList").show();
             })
@@ -183,6 +204,11 @@
                     }
                 }
             });
+            $(".backfirst").singleTap(function () {
+                $(".EndPage").hide();
+                $(".HomePage").show();
+            })
+            
             //生成题目
             function NewFrame() {
                 var NumRan = GetRandomNum(3, 8);
@@ -213,7 +239,7 @@
             }
             //开始游戏
             function StartGame() {
-                Mark = 0, AnswerNum = 0;
+        		Mark = 0, AnswerNum = 0;
                 $(".StartPage h1 span").eq(0).html(CDTime);
                 $(".StartPage h1 span").eq(1).html(Mark);
                 setTimeout(function () { $(".caption").addClass("ShowWord"); }, 100);
@@ -235,8 +261,8 @@
             	clearInterval(CountDown);
                 $.ajax({ //上传分数
                     type: "post",
-                    url: "http://wupeng.tunnel.qydev.com/weixin/uploadScore",
-                    data: { "openid": "${openid}", "score": Mark },
+                    url: "/weixin/uploadScore",
+                    data: { "openid": "${openid}","scoreid": scoreid, "score": Mark },
                     dataType: "json",
                     success: function (data) {
                     	$(".StartPage").hide();

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50610
 File Encoding         : 65001
 
-Date: 2016-09-04 14:04:05
+Date: 2016-09-08 08:58:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -308,7 +308,7 @@ CREATE TABLE `eova_log` (
   `ip` varchar(255) NOT NULL COMMENT '操作IP',
   `info` varchar(500) DEFAULT NULL COMMENT '操作详情',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of eova_log
