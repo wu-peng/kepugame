@@ -1,0 +1,23 @@
+<%layout("/eova/layout/default.html",{'title' : 'Easy Object View Admin'}){%>
+
+<form action="/game/queryRank">
+<div style="padding:5px;">开始时间：<#time id="startDate" name="startDate" value="" isNoN="true"/></div>
+<div style="padding:5px;">结束时间：<#time id="endDate" name="endDate" value="" isNoN="true"/></div>
+<input type="submit" value="提交" />
+<table>
+	<tr>
+		<th>昵称</th>
+		<th>分数</th>
+	</tr>
+	<%for(r in ranks){%>
+	<tr>
+		<td>${r.nickname}</td>
+		<td>${r.maxscore}</td>
+	</tr>
+	<%}%>
+</table>
+</form>
+
+
+<%}%>
+
