@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.eova</groupId>
-    <artifactId>eova</artifactId>
+    <artifactId>kepu</artifactId>
     <packaging>war</packaging>
     <version>1.5</version>
 
-    <name>eova</name>
+    <name>kepu</name>
     <url>http://git.oschina.net/eova/eova</url>
 
     <properties>
@@ -40,8 +40,8 @@
     <dependencies>
     
         <dependency>
-		    <groupId>com.eova2</groupId>
-		    <artifactId>eova2</artifactId>
+		    <groupId>com.eova</groupId>
+		    <artifactId>eova</artifactId>
 		    <version>1.0</version>
 		</dependency>
 		
