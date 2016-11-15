@@ -111,11 +111,13 @@
                 CountDown,//倒计时
                 Gstart = false;
 
-            var pa = new Array();//图片数组
-            for (var i = 0; i < 15; i++) {
-                pa[i] = "/game/images/ic_" + i + ".png";
-                $(".loadingimg").append('<img src="/game/images/ic_' + i + '.png" />');
-            }
+            var pa=${urlList};
+            //加载游戏图片数组
+            for (var i = 0; i < pa.length; i++) {
+                console.log(pa[i]);
+                $(".loadingimg").append('<img src="' + pa[i] + '" />');
+            } 
+            
             $(".submit").singleTap(function () {
                 $.ajax({ //判断用户今天玩了几次
                     type: "post",
@@ -212,7 +214,7 @@
             //生成题目
             function NewFrame() {
                 var NumRan = GetRandomNum(3, 8);
-                var PicRan = GetRandomNum(0, 15);
+                var PicRan = GetRandomNum(0, pa.length-1);
                 var PosRan = GetRandomNum(0, NumRan - 1);
                 $(".StartPage p span").html(NumRan);
                 $(".GameMain1").html(GetHtml(NumRan, PicRan, PosRan))
@@ -220,8 +222,8 @@
             function GetHtml(num, pic, pos) {
                 var contents = '<ul class="Number' + num + '">';
                 for (var i = 0; i < num; i++) {
-                    if (i != pos) { contents += '<li><img src="/game/images/ic_' + pic + '.png" /></li>'; }
-                    else { contents += '<li class="Flip"><img src="/game/images/ic_' + pic + '.png" /></li>'; }
+                    if (i != pos) { contents += '<li><img src="'+pa[pic]+'" /></li>'; }
+                    else { contents += '<li class="Flip"><img src="' + pa[pic] + '" /></li>'; }
                 }
                 contents += '</ul>';
                 return contents;
@@ -269,7 +271,7 @@
                         $(".EndPage").show();
                         Gstart = false;
                         $(".EndPage h1 span").html(Mark + "分");
-                        alert(data.msg);
+                        //alert(data.msg);
                     }
                 });
             }

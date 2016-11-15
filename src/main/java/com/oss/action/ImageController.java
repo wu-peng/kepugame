@@ -15,7 +15,7 @@ public class ImageController extends Controller {
 		List<GameImage> images = GameImage.dao.find();
 		List<String> urlList = new ArrayList<String>();
 		for (GameImage image : images) {
-			String url = imgpath+image.get("image");
+			String url = imgpath+"/"+image.get("image");
 			urlList.add(url);
 		}
 		

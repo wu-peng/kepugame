@@ -1,6 +1,9 @@
 package com.oss.action;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +14,8 @@ import org.apache.commons.lang.StringUtils;
 import com.eova.common.utils.time.DateUtil;
 import com.eova.config.EovaConfig;
 import com.jfinal.core.Controller;
+import com.jfinal.kit.JsonKit;
+import com.oss.model.GameImage;
 import com.oss.model.UserScore;
 import com.oss.model.UserWeixin;
 
@@ -32,7 +37,7 @@ public class WeixinController extends Controller {
 			System.out.print("没有获取到响应参数");
 			String url = "https://open.weixin.qq.com/connect/oauth2/authorize?";
 			url+="appid="+appId;
-			url+="&redirect_uri="+"http://wupeng.tunnel.qydev.com/weixin/game";
+			url+="&redirect_uri="+"http://wupeng.ngrok.cc/weixin/game";
 			url+="&response_type=code";
 			url+="&scope=snsapi_userinfo";
 			url+="&state=null";
@@ -74,7 +79,7 @@ public class WeixinController extends Controller {
 		if (user==null) {
 			user = new UserWeixin();
 			user.set("openid", umap.getOpenid());
-			user.set("nickname", umap.getNickname());
+			user.set("nickname", umap.getNickname()+"💃");
 			user.set("sex", umap.getSex());
 			user.set("province", umap.getProvince());
 			user.set("city", umap.getCity());
@@ -104,15 +109,63 @@ public class WeixinController extends Controller {
 		//System.out.println(umap.getUnionid());
 		
 		setAttr("openid", umap.getOpenid());
-		/*List<UserScore> rankList = new UserScore().find();
-		setAttr("ranks", rankList);*/
+		
+		String imgpath = EovaConfig.props.get("domain_img");
+		List<GameImage> images = GameImage.dao.find();
+		List<String> urlList = new ArrayList<String>();
+		for (GameImage image : images) {
+			String url = imgpath+"/"+image.get("image");
+			urlList.add(url);
+		}
+		setAttr("urlList", JsonKit.toJson(urlList));
+		
 		render("/game/index.html");
 	}
 	
 	public void findRank(){
-		List<UserScore> rankList = new UserScore().find();
+		String s1 = "2016-11-01 00:00:00";
+		String e1 = "2016-11-10 23:59:59";
+		
+		String s2 = "2016-09-23 00:00:00";
+		String e2 = "2016-09-30 23:59:59";
+		
+		String startDate = "";
+		String endDate = "";
+		if (compareDate(DateUtil.getCurrDateTimeStr(),s1)==1&&compareDate(DateUtil.getCurrDateTimeStr(),e1)==-1) {
+			startDate = s1;
+			endDate = e1;
+		}else if (compareDate(DateUtil.getCurrDateTimeStr(),s2)==1&&compareDate(DateUtil.getCurrDateTimeStr(),e2)==-1) {
+			startDate = s2;
+			endDate = e2;
+		}else{
+			startDate = s1;
+			endDate = e1;
+		}
+		List<UserScore> rankList = new UserScore().find(startDate,endDate);
 		renderJson(rankList);
 	}
+	
+	public int compareDate(String DATE1, String DATE2) {
+        
+        
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            Date dt1 = df.parse(DATE1);
+            Date dt2 = df.parse(DATE2);
+            if (dt1.getTime() >= dt2.getTime()) {
+                System.out.println("dt1 在dt2前");
+                return 1;
+            } else if (dt1.getTime() <= dt2.getTime()) {
+                System.out.println("dt1在dt2后");
+                return -1;
+            } else {
+                return 0;
+            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+        return 0;
+  }
 	
 	public void startGame(){
 		Map<String, Object> map = new HashMap<String,Object>();
@@ -122,7 +175,7 @@ public class WeixinController extends Controller {
 		String startDate = currentDate+" 00:00:00";
 		String endDate = currentDate+" 23:59:59";
 		UserScore count = UserScore.dao.findFirst("select count(*) as count from user_score where openid=? and create_time>str_to_date(?,'%Y-%m-%d %H:%i:%s') and create_time<str_to_date(?,'%Y-%m-%d %H:%i:%s')", openid,startDate,endDate);
-		if (count.getLong("count")>=5) {
+		if (count.getLong("count")>=9999) {
 			map.put("status", "0");
 			map.put("msg", "每天只能玩5次哦");
 			renderJson(map);
